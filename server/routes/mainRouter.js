@@ -3,7 +3,7 @@ var express = require('express');
 
 //routers declarations
 var router = express.Router();
-var exampleRouter = require('./exampleRouter')
+var tagsRouter = require('./tagsRouter')
 
 
 // Middleware that checks if logged in and sets cookie to true
@@ -21,7 +21,7 @@ var exampleRouter = require('./exampleRouter')
 
 
 // Set up our different api endpoints
-router.use('/example', exampleRouter);
+router.use('/tags', tagsRouter);
 
 module.exports = router; 
 

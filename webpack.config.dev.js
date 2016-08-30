@@ -9,8 +9,8 @@ module.exports = {
   entry: {
     app: [
       'eventsource-polyfill', // necessary for hot reloading with IE
-      'webpack-hot-middleware/client',
-      'eventsource-polyfill', // necessary for hot reloading with IE
+      // 'webpack-hot-middleware/client',
+      // 'eventsource-polyfill', // necessary for hot reloading with IE
       './client-src/index'
     ],
     vendor: ['react', 'redux'],

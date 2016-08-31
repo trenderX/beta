@@ -5,10 +5,10 @@ var VendorChunkPlugin = require('webpack-vendor-chunk-plugin');
 
 module.exports = {
   //webpack docs say 'cheap-module-source-map' is best for prod.
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   entry: { 
     app: './client-src/index',
-    vendor: ['react', 'redux'],
+    vendor: ['react', 'redux','react-dom'],
   },
   output: {
     path: path.resolve('./dist'),

@@ -59,13 +59,13 @@ if(process.env.NODE_ENV !== 'production'){
   app.use(require('webpack-hot-middleware')(compiler));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, '../index.html'));
   });
 }else{
   var distFolder = path.resolve(__dirname, '../dist/');
   app.use(express.static(distFolder));
   app.get('*', function response(req, res) {
-    res.sendFile(distFolder + 'index.html');
+    res.sendFile(distFolder + '/index.html');
   });  
 } 
 

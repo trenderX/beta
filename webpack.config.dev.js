@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var HappyPack = require('happypack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var VendorChunkPlugin = require('webpack-vendor-chunk-plugin');
 
@@ -10,10 +11,9 @@ module.exports = {
     app: [
       'eventsource-polyfill', // necessary for hot reloading with IE
       'webpack-hot-middleware/client',
-      'eventsource-polyfill', // necessary for hot reloading with IE
       './client-src/index'
     ],
-    vendor: ['react', 'redux'],
+    vendor: ['react', 'redux','webpack-hot-middleware/client'],
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -26,7 +26,7 @@ module.exports = {
       {
         test: /\.js?/,
         exclude: [/node_modules/, /styles/],
-        loader: 'babel',
+        loaders: [ 'happypack/loader' ],
         include: path.join(__dirname, 'client-src')
       },
       {
@@ -42,10 +42,20 @@ module.exports = {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
         loader: "url"
       },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
     ]
   },
 
   plugins: [
+    new HappyPack({
+      // loaders is the only required parameter:
+      loaders: [ 'babel' ],
+
+      // customize as needed, see Configuration below
+    }),
 
     //HtmlWebpackPlugin creates an index.html file in dist and injects script tag.
     new HtmlWebpackPlugin({

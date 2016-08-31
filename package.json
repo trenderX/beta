@@ -39,6 +39,7 @@
     "flexboxgrid": "^6.3.1",
     "happypack": "^2.2.1",
     "html-webpack-plugin": "^2.22.0",
+    "json-loader": "^0.5.4",
     "mongoose": "^4.4.11",
     "morgan": "^1.7.0",
     "node-sass": "^3.8.0",
@@ -76,7 +77,8 @@
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js ",
     "start:prod": "cross-env NODE_ENV=production nodemon server/app.js",
     "build": "npm run clean && npm run build:webpack && npm run start:prod",
-    "dev": "cross-env NODE_ENV=development nodemon server/app.js",
+    "dev": "cross-env NODE_ENV=development nodemon --watch server && npm run start:dev",
+    "start:dev": "node server/app.js",
     "lint": "eslint src"
   },
   "bugs": {

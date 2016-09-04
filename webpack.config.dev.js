@@ -3,60 +3,58 @@ var webpack = require('webpack');
 var HappyPack = require('happypack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var VendorChunkPlugin = require('webpack-vendor-chunk-plugin');
-
+var precss = require('precss');
+var autoprefixer = require('autoprefixer');
 module.exports = {
-  //webpack docs say devtool:eval is faster for build, not file size.
-  devtool: 'eval',
+
+  /*webpack docs say devtool:eval is faster for build, 
+  but sourcemap is needed for react-css-modules.*/
+  devtool: 'source-map',
   entry: {
     app: [
       'eventsource-polyfill', // necessary for hot reloading with IE
       'webpack-hot-middleware/client',
       './client-src/index'
     ],
-    vendor: ['react', 'redux','webpack-hot-middleware/client'],
+    //splits our client code from react/redux code
+    vendor: ['react', 'redux', 'webpack-hot-middleware/client'],
   },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: 'http://localhost:3000/'
   },
+  resolve: {
+    extensions: ['', '.js','.css','.scss'],
+    modules: [
+      'client-src',
+      'node_modules',
+    ],
+  },
 
   module: {
-    loaders: [
-      {
-        test: /\.js?/,
-        exclude: [/node_modules/, /styles/],
-        loaders: [ 'happypack/loader' ],
-        include: path.join(__dirname, 'client-src')
-      },
-      {
-        test: /\.scss$/,
-        loader: 'style!css!sass'
-      }, 
-      {
-        test: /\.css$/,
-        loader: 'style!css?modules',
-        include: /flexboxgrid/,
-      }, 
-      { 
-        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "url"
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
-      },
-    ]
+    loaders: [{
+      test: /\.js?/,
+      exclude: /node_modules/,
+      loader: 'babel',
+      include: path.join(__dirname, 'client-src')
+    }, {
+      test: /(\.scss|\.css)$/,
+      include: [/client-src/,/react-toolbox/,/flexboxgrid/],
+      loaders: [
+        'style?sourceMap',
+        'css?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]!postcss!sass',
+      ]
+    }, {
+      test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: "url"
+    }, {
+      test: /\.json$/,
+      loader: 'json-loader',
+    }, ]
   },
 
   plugins: [
-    new HappyPack({
-      // loaders is the only required parameter:
-      loaders: [ 'babel' ],
-
-      // customize as needed, see Configuration below
-    }),
-
     //HtmlWebpackPlugin creates an index.html file in dist and injects script tag.
     new HtmlWebpackPlugin({
       template: 'index.html',
@@ -73,9 +71,9 @@ module.exports = {
      * will not be emitted. If you want your webpack to 'fail', you need to check out
      * the bail option.
      */
+    new webpack.NoErrorsPlugin(),
     new VendorChunkPlugin('vendor'),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
-    new webpack.NoErrorsPlugin(),
     /**
      * DefinePlugin allows us to define free variables, in any webpack build, you can
      * use it to create separate builds with debug logging or adding global constants!
@@ -85,4 +83,11 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
   ],
+  /**
+   * postCss (http://postcss.org/) is like babel but for css, it allows for
+   * use of css4 syntax, autoprefixing, CSS linting, variables and much much more.
+   */
+  postcss: function() {
+    return [require('autoprefixer'), require('precss')];
+  }
 };

@@ -2,13 +2,33 @@ import React, { Component, PropTypes } from 'react';
 import { increment, decrement } from '../actions/CounterActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-const {Grid, Row, Col} = require('react-flexbox-grid');
+import {Grid, Row, Col} from 'react-flexbox-grid';
+import CSSModules from 'react-css-modules';
+import styles from './Counter.css';
+import Input from 'react-toolbox/lib/input';
+import Button from 'react-toolbox/lib/button';
 
 class Counter extends Component {
   constructor(props) {
     super(props);
+
+    /*binding this*/
+    this.handleChange = this.handleChange.bind(this);
+
+    /*State shouldnt be managed here, only testing for the
+    input form below*/
+    this.state = { 
+      name: '', 
+      phone: '', 
+      multiline: '', 
+      email: '', 
+      hint: '' 
+    };
   }
 
+  handleChange(name,value) {
+    this.setState({name: value});
+  }
   handleIncrement() {
       this.props.dispatch(increment());
   }
@@ -18,21 +38,26 @@ class Counter extends Component {
   }
 
   render() {
-    let num = 0;
     return (
-      <div className="counter-container">
-        <div className="counter-num-label">{this.props.counter}</div>
-        {/* Below, the even or odd statement is simply used to demonstrate how one could
-        easily use a ternary operator to conditionally show an 'even' or 'odd' string
-        based on the counter's value on state. */}
-        <div className="counter-even-label">{this.props.counter % 2 === 0 ? 'even' : 'odd'}</div>
-        <br />
-        <div className="counter-buttons">
-          <button onClick={() => {this.handleDecrement();}}>-</button>
-          <button onClick={() => {this.handleIncrement();}}>+</button>
-        </div>
-      </div>
-
+      <Grid>
+        <Row >
+          <Col xsOffset={1} xs={11} >
+            <div styleName='test' className="counter-container" >
+              <div className="counter-num-label" >{this.props.counter}</div>
+              {/* Below, the even or odd statement is simply used to demonstrate how one could
+              easily use a ternary operator to conditionally show an 'even' or 'odd' string
+              based on the counter's value on state. */}
+              <div className="counter-even-label">{this.props.counter % 2 === 0 ? 'even' : 'odd'}</div>
+              <br />
+              <div className="counter-buttons">
+                <Button raised primary onClick={() => {this.handleDecrement();}}>-</Button>
+                <Button raised primary onClick={() => {this.handleIncrement();}}>+</Button>
+              </div>
+              <Input type='text' label='Name' name='name' value={this.state.name} onChange={this.handleChange.bind(this, 'name')} maxLength={16 } />
+            </div>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
@@ -40,6 +65,8 @@ class Counter extends Component {
 
 
 
-// Lets us access our store and the 'dispatch()' function.
-export default connect(state => state)(Counter)
+/*Lets us access our store and the 'dispatch()' function, CssModules() allows 
+for us to access the styleName prop*/
+export default connect(state => state)(CSSModules(Counter,styles))
+
 

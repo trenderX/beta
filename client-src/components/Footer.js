@@ -5,7 +5,7 @@ export default class Footer extends Component {
     return (
       <footer>
         <span id="footer-text-wrap">
-        Made with Javascript & Caffeine by Richard Morales & Sergio Martin.
+        Made with Javascript & Caffeine by <a>Richard Morales & Sergio Martin</a>.
         </span>
       </footer>
     );

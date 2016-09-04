@@ -2,13 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import Footer from '../components/Footer';
 import { connect } from 'react-redux';
 import DevTools from './DevTools'
-import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import routes from '../routes';
-import { syncHistoryWithStore } from 'react-router-redux';
+import CSSModules from 'react-css-modules';
 
 //Require Main Global styles for the App
-require('../styles/main.scss');
+import styles from '../styles/main.scss';
 
 
 /**
@@ -18,38 +15,31 @@ require('../styles/main.scss');
  * component to make the Redux store available to the rest of the app.
  */
 
-export default class App extends Component {
+class App extends Component {
 
   render(){
-    const { store } = this.props;
-    console.log('store is:',store)
+    console.log('App styles:',this.props.styles)
 
     // If we are in production env, then show DevTools, else don't.
     if (process.env.NODE_ENV === 'development') {
       return (
-        <Provider store={store}>
-          <div>
-            <Router history={browserHistory}>
-              {routes}
-            </Router>
+          <div styles={styles} >
+            {this.props.children}
             <Footer/>
             <DevTools/>
           </div>
-        </Provider>
       );
     } else {
       return (
-        <Provider store={store}>
           <div>
-            <Router history={browserHistory}>
-              {routes}
-            </Router>
+            {this.props.children}
             <Footer/>
           </div>
-        </Provider>
       );
     }
   }
 }
+
+export default CSSModules(App, styles);
 
 

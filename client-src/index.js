@@ -1,9 +1,13 @@
+// this is the entry for webpack to our app
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {render} from 'react-dom';
-import App from './containers/App'
 import { configureStore } from './store/configureStore';
-import { AppContainer } from 'react-hot-loader';
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
+import routes from './routes';
+// import { syncHistoryWithStore } from 'react-router-redux';
 
 const mountApp = document.getElementById('root');
 
@@ -11,6 +15,10 @@ const mountApp = document.getElementById('root');
 const store = configureStore();
 
 ReactDOM.render(
-  <App store={store} />,
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      {routes}
+    </Router>
+  </Provider>,
 mountApp
 );

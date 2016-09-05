@@ -2,11 +2,11 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './containers/App';
-import Counter from './components/Counter';
+import LandingPage from './containers/LandingPage/LandingPage';
 
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Counter}/>
+    <IndexRoute component={LandingPage}/>
   </Route>
 );

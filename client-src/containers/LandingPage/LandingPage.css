@@ -1,15 +1,31 @@
+/*Advanced variables via PreCSS*/
+
+$lt-blue:#0582CA;
+$dk-blue:#0048C1;
+$shadow:0px 2px 8px 0px rgba(0, 0, 0, 0.20);
+$bluegrad: linear-gradient(89deg, #54D08B 0%, #2AA38B 100%);
+
 .box {
-  padding:1em;
-  margin-bottom:1em;
+  padding: 1em;
+  margin-bottom: 1em;
 }
 
 .lt-blue {
-  composes:box;
-  background: #0582CA;
+  composes: box;
+  background-image:$bluegrad;
+  box-shadow: $shadow;
 }
 
 .dk-blue {
-  composes:box;
-  background: #0048C1;
-  margin-bottom: 0px
+  composes: box;
+  background: $dk-blue;
+  margin-bottom: 0px;
+}
+
+section {
+  lost-utility: clearfix;
+}
+
+div {
+  lost-column: 1/2;
 }

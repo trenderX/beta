@@ -8,8 +8,10 @@ let options = { allowMultiple:true }
 class LandingPage extends Component {
   render(){
     return (
+    <div>
     <Grid>
-      <Row styleName='dk-blue'>
+      <h1> react-flexbox-grid </h1>
+      <Row>
         <Col md={3} sm={6} xs={12}>
           <div styleName='lt-blue'>
             <h3>1</h3>
@@ -42,6 +44,15 @@ class LandingPage extends Component {
         </Col>
       </Row>
     </Grid>
+    {/* Deciding Between LostGrid and React-Flexbox-Grid*/}
+    <section>
+    <h1>LostGrid</h1>
+      <div styleName='lt-blue'>1</div>
+      <div styleName='lt-blue'>2</div>
+      <div styleName='lt-blue'>3</div>
+      <div styleName='lt-blue'>4</div>
+    </section>
+  </div>
     );
   } 
 }

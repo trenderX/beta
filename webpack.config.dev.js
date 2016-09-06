@@ -5,6 +5,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var VendorChunkPlugin = require('webpack-vendor-chunk-plugin');
 var precss = require('precss');
 var autoprefixer = require('autoprefixer');
+var getPostCSSConfig = require('./client-src/PostCss.config');
+
 module.exports = {
 
   /*webpack docs say devtool:eval is faster for build, 
@@ -25,7 +27,7 @@ module.exports = {
     publicPath: 'http://localhost:3000/'
   },
   resolve: {
-    extensions: ['', '.js','.css','.scss'],
+    extensions: ['', '.js', '.css', '.scss'],
     modules: [
       'client-src',
       'node_modules',
@@ -39,11 +41,22 @@ module.exports = {
       loader: 'babel',
       include: path.join(__dirname, 'client-src')
     }, {
-      test: /(\.scss|\.css)$/,
-      include: [/client-src/,/react-toolbox/,/flexboxgrid/],
+      test:/\.css$/ ,
+      include: [/client-src/, /react-toolbox/, /flexboxgrid/],
       loaders: [
         'style?sourceMap',
-        'css?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]!postcss!sass',
+        'css?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]',
+        'sass?sourceMap',
+        'postcss'
+      ]
+    }, {
+      test: /\.scss$/,
+      include: [/client-src/, /react-toolbox/, /flexboxgrid/],
+      loaders: [
+        'style?sourceMap',
+        'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+        'resolve-url',
+        'sass?sourcMap',
       ]
     }, {
       test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -87,7 +100,14 @@ module.exports = {
    * postCss (http://postcss.org/) is like babel but for css, it allows for
    * use of css4 syntax, autoprefixing, CSS linting, variables and much much more.
    */
+  // postcss: function(bundler) {
+  //   return getPostCSSConfig(bundler, {})
+  // },
   postcss: function() {
-    return [require('autoprefixer'), require('precss')];
+    return [
+      require('postcss-import')({ addDependencyTo: webpack }),
+      require('precss'),
+      require('autoprefixer'),
+    ]
   }
 };

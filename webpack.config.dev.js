@@ -100,6 +100,8 @@ module.exports = {
    * postCss (http://postcss.org/) is like babel but for css, it allows for
    * use of css4 syntax, autoprefixing, CSS linting, variables and much much more.
    */
+   
+  // working on config file
   // postcss: function(bundler) {
   //   return getPostCSSConfig(bundler, {})
   // },
@@ -108,6 +110,7 @@ module.exports = {
       require('postcss-import')({ addDependencyTo: webpack }),
       require('precss'),
       require('autoprefixer'),
+      require('lost'),
     ]
   }
 };

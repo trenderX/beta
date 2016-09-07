@@ -45,12 +45,14 @@ class LandingPage extends Component {
       </Row>
     </Grid>
     {/* Deciding Between LostGrid and React-Flexbox-Grid*/}
-    <section>
     <h1>LostGrid</h1>
-      <div styleName='lt-blue'>1</div>
-      <div styleName='lt-blue'>2</div>
-      <div styleName='lt-blue'>3</div>
-      <div styleName='lt-blue'>4</div>
+    <section styleName='grid-one'>
+      <div styleName='col-1-4'><h3>1</h3></div>
+      <div styleName='col-1-4'><h3>2</h3></div>
+      <div styleName='col-1-4'><h3>3</h3></div>
+      <div styleName='col-1-4'><h3>4</h3></div>
+      <div styleName='col-1-4'><h3>5</h3></div>
+      <div styleName='col-1-4'><h3>6</h3></div>
     </section>
   </div>
     );

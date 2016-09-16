@@ -1,0 +1,18 @@
+.grid-one {
+    width: 100%;
+    lost-utility: clearfix;
+}
+
+.col-12 {
+    lost-column: 1/1;
+    padding: 0px;
+    color: white;
+}
+
+.center-center {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+    font-size: 4em;
+}

@@ -8,11 +8,11 @@ $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
 
 body {
-  background-color: $main-bg-color;
-  color: $accent-black;
   display: flex;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
+  margin: 0px;
+  font-size: 16px;
 }
 
 .main-app-container {

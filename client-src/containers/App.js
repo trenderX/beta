@@ -5,6 +5,7 @@ import DevTools from './DevTools'
 import CSSModules from 'react-css-modules';
 
 //Require Main Global styles for the App
+//Remove SASS
 import styles from '../styles/main.scss';
 
 

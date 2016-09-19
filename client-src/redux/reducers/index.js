@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import counter from './counter';
+import { searchterm } from './landing_page';
 import {routerReducer} from 'react-router-redux';
 
 /**
@@ -16,7 +17,8 @@ import {routerReducer} from 'react-router-redux';
  * More info: http://rackt.org/redux/docs/api/combineReducers.html
  */
 const rootReducer = combineReducers({
-  counter, 
+  counter,
+  searchterm,
   routing: routerReducer
 });
 

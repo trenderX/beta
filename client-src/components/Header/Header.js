@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './Header.css'
 import CSSModules from 'react-css-modules';
-
+import SearchBar from '../SearchBar/SearchBar'
 //pure function
 const Header = (props) => {
   //move this into styles
@@ -14,12 +14,16 @@ const Header = (props) => {
     backgroundPosition:`center`,
     display:`table`
   }
+    console.log('header:',props)
 
   return  (
+
     <div style={bgImg} >
-      {/* Turn into a <Greeting/> */}
-      <h1 styleName='center-center'> Work Hard, Dream BIG. </h1>
-      {/* Search bar will be placed here */}
+      <div styleName='center-center'>
+        {/* Turn into a <Greeting/> */}
+        <h1> {props.value} </h1>
+        <SearchBar value={props.value} query={props.query} />
+      </div>
     </div>
   )
 }

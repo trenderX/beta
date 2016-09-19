@@ -1,24 +1,46 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
+import { clicky } from '../../redux/actions/LandingPageActions';
+
+// import Counter from '../../components/Counter'
 import styles from './LandingPage.css'
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Grid, Row, Col } from 'react-flexbox-grid'
 import Header from '../../components/Header/Header'
+import defaultBG from '../../assets/imgs/dreamBIG.jpeg'
+
 let options = { allowMultiple:true }
 
 class LandingPage extends Component {
+  constructor(props){
+    super(props)
+  }
+
+  handleClickE = (e) => {
+    this.setState({value:e})
+    console.log('props:',this.props)
+  }
+
+  reduxClick = (e) => {
+    this.props.dispatch(clicky(e))
+  }
+
   render(){
+    console.log('landingpageState:',this.state)
 
     // * this needs to be an API call to pexels || default img
     // * need to update once search term is passed up
-    let wallpaper = 'https://static.pexels.com/photos/111174/pexels-photo-111174.jpeg';
+    let wallpaper = defaultBG;
     
     return  (
       <section styleName='grid-one'>
-        <Header  image={wallpaper} />
+        <Header  query={this.reduxClick} 
+                 value={this.props.searchterm.term}
+                 image={wallpaper} />
       </section>
     );
   } 
 }
 
 
-export default CSSModules(LandingPage,styles, options);
+export default connect(state => state)(CSSModules(LandingPage,styles))

@@ -59,12 +59,13 @@ module.exports = {
         'sass?sourcMap',
       ]
     }, {
-      test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: "url"
+      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?[\s\S]+)?$/, 
+      loader: 'file?name=[name].[ext]'
     }, {
       test: /\.json$/,
       loader: 'json-loader',
-    }, ]
+    }, 
+    ]
   },
 
   plugins: [

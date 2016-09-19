@@ -1,0 +1,7 @@
+.center-center {
+  composes: center-center from '../Header/Header.css'
+}
+
+.search-bar {
+  color:white!important;
+}

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { increment, decrement } from '../actions/CounterActions';
+import { increment, decrement } from '../redux/actions/CounterActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import {Grid, Row, Col} from 'react-flexbox-grid';

@@ -1,6 +1,6 @@
 {
   "presets": [
-    "react", "es2015"
+    "react", "es2015","stage-2"
   ],
   "env": {
     "development": {
@@ -11,7 +11,8 @@
     "production": {
       "plugins": [
         "transform-react-constant-elements",
-        "transform-react-inline-elements"
+        "transform-react-inline-elements",
+        "transform-class-properties"
       ]
     }
   }

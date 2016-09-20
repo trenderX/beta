@@ -4,10 +4,14 @@ import CSSModules from 'react-css-modules';
 import Input from 'react-toolbox/lib/input';
 
 const SearchBar = (props) => {
+  let blues = {
+    backgroundColor:`white`
+  }
+
   return (
    
      <Input
-        styleName='search-bar'
+        theme={styles}
         type='text' 
         label='Search Everything.' 
         name='Search' 

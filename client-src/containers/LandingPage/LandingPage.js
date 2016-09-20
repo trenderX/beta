@@ -12,14 +12,9 @@ import defaultBG from '../../assets/imgs/dreamBIG.jpeg'
 let options = { allowMultiple:true }
 
 class LandingPage extends Component {
-  constructor(props){
-    super(props)
-  }
-
-  handleClickE = (e) => {
-    this.setState({value:e})
-    console.log('props:',this.props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
 
   reduxClick = (e) => {
     this.props.dispatch(clicky(e))
@@ -31,11 +26,10 @@ class LandingPage extends Component {
     // * this needs to be an API call to pexels || default img
     // * need to update once search term is passed up
     let wallpaper = defaultBG;
-    
     return  (
       <section styleName='grid-one'>
         <Header  query={this.reduxClick} 
-                 value={this.props.searchterm.term}
+                 value={this.props.searchterm.search}
                  image={wallpaper} />
       </section>
     );

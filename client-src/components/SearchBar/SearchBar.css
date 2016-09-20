@@ -1,7 +1,13 @@
-.center-center {
+/*.center-center {
   composes: center-center from '../Header/Header.css'
-}
+}*/
 
-.search-bar {
+.inputElement {
   color:white!important;
 }
+.bar {
+  &:before, &:after {
+    background-color: white!important;
+  }
+}
+

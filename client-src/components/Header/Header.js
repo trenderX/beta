@@ -9,12 +9,14 @@ const Header = (props) => {
   //move this into styles
   let bgImg = {
     backgroundImage:`url(${props.image})`,
-    height:`80vh`,
+    height:`50vh`,
     width:`100%`,
     backgroundSize:`cover`,
     backgroundRepeat:`no-repeat`,
     backgroundPosition:`center`,
-    display:`table`
+    display:`table`,
+    transition: `.2s all ease-in-out`
+
   }
 
 
@@ -22,13 +24,17 @@ const Header = (props) => {
 
   return  (
     <div style={bgImg} >
-      <Row middle='xs' center='xs' styleName='height-100'>
-        <Col md={6} xs={12}>
-            {/* Turn into a <Greeting/> */}
-            <h1 styleName='greeting'> {props.value} </h1>
-            <SearchBar value={props.value} query={props.query} />
-        </Col>
-      </Row> 
+      <div styleName='overlay'>
+        <div styleName='container'>
+          <Row middle='xs' center='xs' styleName='height-100'>
+            <Col styleName='ease-in-out' md={8} sm={6} xs={12}>
+              {/* Turn into a <Greeting/> */}
+              <h1 styleName='greeting'> Find More<span styleName='period'>.</span> </h1>
+              <SearchBar value={props.value} query={props.query} />
+            </Col>
+          </Row> 
+        </div> 
+      </div>
     </div>
   )
 }

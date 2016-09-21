@@ -7,7 +7,7 @@ import { clicky } from '../../redux/actions/LandingPageActions';
 import styles from './LandingPage.css'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import Header from '../../components/Header/Header'
-import defaultBG from '../../assets/imgs/dreamBIG.jpeg'
+import defaultBG from '../../assets/imgs/city_shop.jpeg'
 
 let options = { allowMultiple:true }
 
@@ -27,7 +27,7 @@ class LandingPage extends Component {
     // * need to update once search term is passed up
     let wallpaper = defaultBG;
     return  (
-      <section styleName='grid-one'>
+      <section>
         <Header  query={this.reduxClick} 
                  value={this.props.searchterm.search}
                  image={wallpaper} />

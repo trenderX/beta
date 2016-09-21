@@ -14,6 +14,7 @@ const SearchBar = (props) => {
         theme={styles}
         type='text' 
         label='Search Everything.' 
+        floating='false'
         name='Search' 
         value= {props.value}
         onChange={props.query} 

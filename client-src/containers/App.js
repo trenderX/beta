@@ -6,7 +6,7 @@ import CSSModules from 'react-css-modules';
 
 //Require Main Global styles for the App
 //Remove SASS
-import styles from '../styles/main.scss';
+import styles from '../styles/main.css';
 
 
 /**

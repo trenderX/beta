@@ -1,13 +1,19 @@
-/*.center-center {
-  composes: center-center from '../Header/Header.css'
-}*/
-
 .inputElement {
-  color:white!important;
+  color: white!important;
+  border-bottom: 2px solid rgba(248, 248, 248, 0.5)!important;
 }
+.input {
+  font-family: 'Open Sans'!important
+}
+
+.label {
+  color: #06D6A0!important;
+  font-weight:600;
+}
+
 .bar {
-  &:before, &:after {
-    background-color: white!important;
+  &:before,
+  &:after {
+    background-color: #06D6A0!important;
   }
 }
-

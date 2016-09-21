@@ -108,7 +108,7 @@ module.exports = {
   // },
   postcss: function() {
     return [
-      require('postcss-import')({ addDependencyTo: webpack }),
+      require('postcss-import')({ addDependencyTo: webpack, path: ['client-src/styles'] }),
       require('precss'),
       require('autoprefixer'),
       require('lost'),

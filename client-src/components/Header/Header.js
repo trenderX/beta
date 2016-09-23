@@ -9,28 +9,30 @@ const Header = (props) => {
   //move this into styles
   let bgImg = {
     backgroundImage:`url(${props.image})`,
-    height:`50vh`,
+    height:`${props.vh}`,
     width:`100%`,
     backgroundSize:`cover`,
     backgroundRepeat:`no-repeat`,
     backgroundPosition:`center`,
     display:`table`,
-    transition: `.2s all ease-in-out`
-
+    transition: `.8s all cubic-bezier(0.22, 0.61, 0.36, 1)`
   }
 
-
-    console.log('header:',props)
-
   return  (
-    <div style={bgImg} >
+    <div style={ bgImg }>
       <div styleName='overlay'>
         <div styleName='container'>
           <Row middle='xs' center='xs' styleName='height-100'>
-            <Col styleName='ease-in-out' md={8} sm={6} xs={12}>
+            <Col styleName='header-pos' md={8} sm={6} xs={12}>
               {/* Turn into a <Greeting/> */}
-              <h1 styleName='greeting'> Find More<span styleName='period'>.</span> </h1>
-              <SearchBar value={props.value} query={props.query} />
+              <h1 styleName='greeting'> Search, evolved
+                <span styleName='period'>.</span> 
+              </h1>
+              <p styleName='greeting-sub'>Serving up relevant search results for the new web.</p>
+              <SearchBar value={props.value} 
+                         query={props.query}
+                         searched={props.searched}
+                         pos={props.pos} />
             </Col>
           </Row> 
         </div> 

@@ -17,3 +17,16 @@
     background-color: #06D6A0!important;
   }
 }
+
+.search-pos-abs {
+  position: absolute!important;
+  bottom: -2em;
+  width: 50%;
+  left: 0;
+  right:0;
+  margin:auto;
+}
+
+.search-pos {
+  position: relative;
+}

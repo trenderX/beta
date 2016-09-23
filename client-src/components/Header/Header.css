@@ -11,13 +11,23 @@
   font-family: 'Open Sans';
   font-style: italic;
   color: white;
-  font-size: 6em;
+  font-size: 5em;
   text-align: center;
   font-weight: 800;
+  margin-bottom: 21px;
 }
+
+.greeting-sub {
+  font-weight: 600;
+  font-size: 1.25em;
+  color: white;
+  margin-bottom: 5em;
+}
+
 .period {
-  color:#06D6A0;
+  color: #06D6A0;
 }
+
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
   height: 100%;
@@ -26,4 +36,9 @@
 
 .ease-in-out {
   transition: .4s all ease-in-out;
+}
+
+.header-pos {
+  transition: 1.5s all cubic-bezier(0.22, 0.61, 0.36, 1);
+  position: relative;
 }

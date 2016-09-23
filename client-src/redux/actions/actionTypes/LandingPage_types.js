@@ -1,1 +1,2 @@
-export const CLICKY_TYPE = 'CLICKY_TYPE';
+export const USER_VALUE = 'USER_VALUE';
+export const USER_SEARCH = 'USER_SEARCH'

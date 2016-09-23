@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
-import { clicky } from '../../redux/actions/LandingPageActions';
+import { userValue, userSearch } from '../../redux/actions/LandingPageActions';
 
 // import Counter from '../../components/Counter'
 import styles from './LandingPage.css'
@@ -12,25 +12,29 @@ import defaultBG from '../../assets/imgs/city_shop.jpeg'
 let options = { allowMultiple:true }
 
 class LandingPage extends Component {
-  // constructor(props){
-  //   super(props)
-  // }
 
-  reduxClick = (e) => {
-    this.props.dispatch(clicky(e))
-  }
+  handleChange = (e) => {
+    this.props.dispatch(userValue(e))
+  };  
+
+  handleSearch = (e) => {
+    e.preventDefault();
+    this.props.dispatch(userSearch(this.props.searchterm.search))
+  };
+
 
   render(){
-    console.log('landingpageState:',this.state)
-
-    // * this needs to be an API call to pexels || default img
+    // * defaultBG needs to be an API call to pexels || default img
     // * need to update once search term is passed up
-    let wallpaper = defaultBG;
     return  (
       <section>
-        <Header  query={this.reduxClick} 
+        <Header  query={this.handleChange} 
+                 searched={this.handleSearch}
                  value={this.props.searchterm.search}
-                 image={wallpaper} />
+                 image={defaultBG} 
+                 pos={this.props.searchterm.pos}
+                 vh={this.props.searchterm.vh}
+                 />
       </section>
     );
   } 

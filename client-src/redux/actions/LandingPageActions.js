@@ -1,12 +1,21 @@
-import { CLICKY_TYPE } from './actionTypes/LandingPage_types';
+import { USER_VALUE, USER_SEARCH} from './actionTypes/LandingPage_types';
 
-function clicky(payload) {
+
+function userValue(payload) {
   return {
-    type: CLICKY_TYPE,
+    type: USER_VALUE,
+    payload
+  };
+}
+
+function userSearch(payload) {
+  return {
+    type: USER_SEARCH,
     payload
   };
 }
 
 module.exports = {
-  clicky,
+  userValue,
+  userSearch
 };

@@ -4,22 +4,21 @@ import CSSModules from 'react-css-modules';
 import Input from 'react-toolbox/lib/input';
 
 const SearchBar = (props) => {
-  let blues = {
-    backgroundColor:`white`
-  }
 
   return (
-   
+   <form onSubmit={props.searched}>
      <Input
         theme={styles}
         type='text' 
         label='Search Everything.' 
-        floating='false'
+        floating={false}
         name='Search' 
         value= {props.value}
-        onChange={props.query} 
+        onChange={props.query}
+        styleName={props.pos}
         maxLength={16} 
       />
+  </form>
 
   )
 }

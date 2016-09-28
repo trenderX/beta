@@ -11,10 +11,11 @@ module.exports = {
 
   /*webpack docs say devtool:eval is faster for build, 
   but sourcemap is needed for react-css-modules.*/
-  devtool: 'source-map',
+  devtool: 'eval',
   entry: {
     app: [
-      'eventsource-polyfill', // necessary for hot reloading with IE
+      'babel-polyfill',
+      // 'eventsource-polyfill', // necessary for hot reloading with IE
       'webpack-hot-middleware/client',
       './client-src/index'
     ],

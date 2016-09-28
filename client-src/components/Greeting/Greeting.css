@@ -1,0 +1,28 @@
+.greeting {
+  font-family: 'Open Sans';
+  font-style: italic;
+  color: white;
+  font-size: 5em;
+  line-height: 1em;
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 21px;
+}
+
+
+.greeting-sub {
+  font-weight: 600;
+  font-size: 1.25em;
+  color: white;
+  margin-bottom: 2em;
+}
+
+.period {
+  color: #06D6A0;
+}
+
+@media screen and (max-width: 480px) {
+  .greeting {
+    font-size: 3em;
+  }
+}

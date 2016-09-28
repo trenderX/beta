@@ -1,7 +1,7 @@
 import { USER_VALUE, USER_SEARCH } from '../actions/actionTypes/LandingPage_types';
 
 const initState = {
-  search: '',
+  multiple:[],
   vh: '100vh',
   pos: 'search-pos'
 }
@@ -10,10 +10,10 @@ function searchterm(state = initState, action) {
   switch (action.type) {
     case USER_VALUE:
       const query = action.payload;
-      return {...state, search: query }
+      return {...state, multiple: query }
     case USER_SEARCH:
-      const userSearch = action.payload;
-      const vh = `50vh`;
+      const userSearch = state.multiple;
+      const vh = `35vh`;
       const pos = `search-pos-abs`;
       return {...state, userSearch: userSearch, vh: vh, pos: pos }
     default:

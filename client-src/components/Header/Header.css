@@ -1,31 +1,12 @@
 @import 'main';
 .container {
-  composes: container from '../../styles/main.css'
+  composes: container from '../../styles/main.css';
 }
 
-.height-100 {
-  height: 100%
-}
-
-.greeting {
-  font-family: 'Open Sans';
-  font-style: italic;
-  color: white;
-  font-size: 5em;
-  text-align: center;
-  font-weight: 800;
-  margin-bottom: 21px;
-}
-
-.greeting-sub {
-  font-weight: 600;
-  font-size: 1.25em;
-  color: white;
-  margin-bottom: 5em;
-}
-
-.period {
-  color: #06D6A0;
+.table-cont {
+  height: 100%;
+  display: table;
+  margin:auto;
 }
 
 .overlay {
@@ -40,5 +21,9 @@
 
 .header-pos {
   transition: 1.5s all cubic-bezier(0.22, 0.61, 0.36, 1);
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  margin:auto;
   position: relative;
 }

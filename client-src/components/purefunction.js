@@ -1,5 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+// import React, { PropTypes } from 'react';
 
-const Text = (props) => <h1>{props.children}</h1>;
+// const Text = (props) => <h1>{props.children}</h1>;
 
-export default Text;
+// export default Text;
+
+// Text.propTypes = {
+//   children: PropTypes.array,
+// };

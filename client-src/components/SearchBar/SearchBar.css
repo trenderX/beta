@@ -1,32 +1,41 @@
-.inputElement {
-  color: white!important;
-  border-bottom: 2px solid rgba(248, 248, 248, 0.5)!important;
-}
-.input {
-  font-family: 'Open Sans'!important
-}
-
-.label {
-  color: #06D6A0!important;
-  font-weight:600;
-}
-
-.bar {
-  &:before,
-  &:after {
-    background-color: #06D6A0!important;
-  }
-}
-
 .search-pos-abs {
   position: absolute!important;
-  bottom: -2em;
-  width: 50%;
+  bottom: 0;
   left: 0;
-  right:0;
-  margin:auto;
+  right: 0;
+  margin: auto;
+  padding-bottom: 0px!important;
 }
 
 .search-pos {
   position: relative;
+}
+
+.search-cont {
+  input[type='text'] {
+    padding-left: 25px;
+    max-width: calc(100% - 25px);
+    color: white;
+    border-bottom: 2px solid white
+  }
+  ul {
+    padding-left: 0;
+  }
+  label {
+    color: white!important;
+  }
+}
+
+.autocomplete, .input {
+  padding-bottom: 0;
+}
+
+.label {
+  color: white!important;
+}
+
+.suggestion {
+  color: black;
+  list-style: none;
+  padding-left: 0;
 }

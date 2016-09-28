@@ -1,46 +1,44 @@
 import React, { Component, PropTypes } from 'react';
 import Footer from '../components/Footer';
-import { connect } from 'react-redux';
-import DevTools from './DevTools'
-import CSSModules from 'react-css-modules';
+import DevTools from './DevTools';
 
-//Require Main Global styles for the App
-//Remove SASS
-import styles from '../styles/main.css';
+// Require Main Global styles for the App
+// Remove SASS
+import '../styles/main.css';
 
 
 /**
  * This is our main route.
  * We pass our Routes to it and they will inherit from here.
- * We wrap the rest of our application with the Provider
- * component to make the Redux store available to the rest of the app.
  */
 
 class App extends Component {
 
-  render(){
-    console.log('App styles:',this.props.styles)
-
+  render() {
+    let renderApp;
     // If we are in production env, then show DevTools, else don't.
     if (process.env.NODE_ENV === 'development') {
-      return (
-          <div styles={styles} >
+      renderApp = (
+          <div>
             {this.props.children}
             <Footer/>
             <DevTools/>
           </div>
       );
     } else {
-      return (
+      renderApp = (
           <div>
             {this.props.children}
             <Footer/>
           </div>
       );
     }
+    return(renderApp)
   }
 }
-
-export default CSSModules(App, styles);
+App.propTypes = {
+  children:PropTypes.object,
+}
+export default App
 
 

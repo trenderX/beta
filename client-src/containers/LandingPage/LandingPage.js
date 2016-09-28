@@ -13,31 +13,34 @@ let options = { allowMultiple:true }
 
 class LandingPage extends Component {
 
-  handleChange = (e) => {
+  handleChange = (e,a) => {
     this.props.dispatch(userValue(e))
-  };  
+  };
 
   handleSearch = (e) => {
     e.preventDefault();
     this.props.dispatch(userSearch(this.props.searchterm.search))
   };
 
-
+  handleDelete = (e) => {
+    e.preventDefault()
+    console.log('delete:',e)
+  };
   render(){
     // * defaultBG needs to be an API call to pexels || default img
     // * need to update once search term is passed up
     return  (
       <section>
-        <Header  query={this.handleChange} 
+        <Header  searchChange={this.handleChange}
                  searched={this.handleSearch}
-                 value={this.props.searchterm.search}
-                 image={defaultBG} 
+                 searchTerm={this.props.searchterm.multiple}
+                 image={defaultBG}
                  pos={this.props.searchterm.pos}
                  vh={this.props.searchterm.vh}
                  />
       </section>
     );
-  } 
+  }
 }
 
 

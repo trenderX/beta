@@ -33,12 +33,10 @@ class App extends Component {
           </div>
       );
     }
-    return(renderApp)
+    return (renderApp);
   }
 }
 App.propTypes = {
-  children:PropTypes.object,
-}
-export default App
-
-
+  children: PropTypes.object,
+};
+export default App;

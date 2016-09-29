@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import counter from './counter';
 import { searchterm } from './landing_page';
-import {routerReducer} from 'react-router-redux';
+import { routerReducer } from 'react-router-redux';
 
 /**
  * combineReducers is important to understand. As your app might grow in size

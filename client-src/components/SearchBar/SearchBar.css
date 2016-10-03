@@ -1,5 +1,4 @@
 .search-pos-abs {
-  position: absolute!important;
   bottom: 0;
   left: 0;
   right: 0;
@@ -26,7 +25,8 @@
   }
 }
 
-.autocomplete, .input {
+.autocomplete,
+.input {
   padding-bottom: 0;
 }
 
@@ -39,3 +39,20 @@
   list-style: none;
   padding-left: 0;
 }
+
+
+/*.values {
+  display: none;
+}*/
+.hide-list {
+  .suggestions {
+    display:none;
+  }
+}
+
+.show-list {
+  .suggestions {
+    display: block!important;
+  }
+}
+

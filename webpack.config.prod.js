@@ -97,6 +97,11 @@ module.exports = {
       require('precss'),
       require('autoprefixer'),
       require('lost'),
+      require('postcss-inline-svg')({
+        path: 'client-src/assets/svg'
+      })
+      //require('cssnano')
+
     ]
   }
 };

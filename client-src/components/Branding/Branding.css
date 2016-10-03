@@ -1,0 +1,11 @@
+.fynd-logo {
+  height: 40px;
+  width: 35px;
+  background: svg-load('Fynd_Logo.svg', fill=#FFF) 50% 50% no-repeat;
+}
+
+.fynd-text {
+  letter-spacing: 3px;
+  color:white;
+  font-weight:300;
+}

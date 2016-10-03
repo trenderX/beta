@@ -9,7 +9,7 @@ var getPostCSSConfig = require('./client-src/PostCss.config');
 
 module.exports = {
 
-  /*webpack docs say devtool:eval is faster for build, 
+  /*webpack docs say devtool:eval is faster for build,
   but sourcemap is needed for react-css-modules.*/
   devtool: 'eval',
   entry: {
@@ -42,7 +42,7 @@ module.exports = {
       loader: 'babel',
       include: path.join(__dirname, 'client-src')
     }, {
-      test:/\.css$/ ,
+      test: /\.css$/,
       include: [/client-src/, /react-toolbox/, /flexboxgrid/],
       loaders: [
         'style?sourceMap',
@@ -60,13 +60,12 @@ module.exports = {
         'sass?sourcMap',
       ]
     }, {
-      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?[\s\S]+)?$/, 
+      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?[\s\S]+)?$/,
       loader: 'file?name=[name].[ext]'
     }, {
       test: /\.json$/,
       loader: 'json-loader',
-    }, 
-    ]
+    }, ]
   },
 
   plugins: [
@@ -102,17 +101,23 @@ module.exports = {
    * postCss (http://postcss.org/) is like babel but for css, it allows for
    * use of css4 syntax, autoprefixing, CSS linting, variables and much much more.
    */
-   
+
   // working on config file
   // postcss: function(bundler) {
   //   return getPostCSSConfig(bundler, {})
   // },
   postcss: function() {
     return [
-      require('postcss-import')({ addDependencyTo: webpack, path: ['client-src/styles'] }),
+      require('postcss-import')({
+        addDependencyTo: webpack,
+        path: ['client-src/styles']
+      }),
       require('precss'),
       require('autoprefixer'),
       require('lost'),
+      require('postcss-inline-svg')({
+        path: 'client-src/assets/svg'
+      })
     ]
   }
 };

@@ -4,33 +4,39 @@ import cssModules from 'react-css-modules';
 import SearchBar from '../SearchBar/SearchBar';
 import Greeting from '../Greeting/Greeting';
 import { Row, Col } from 'react-flexbox-grid';
-
+import Branding from '../Branding/Branding';
 // pure function
 const Header = (props) => {
-  // move this into styles
+  // move this into styles?
   const bgImg = {
     backgroundImage: `url(${props.image})`,
-    height: `${props.vh}`,
+    height: `${props.stateStyles.vh}`,
     width: `100%`,
     backgroundSize: `cover`,
     backgroundRepeat: `no-repeat`,
     backgroundPosition: `center`,
     display: `table`,
-    transition: `.8s all cubic-bezier(0.22, 0.61, 0.36, 1)`
+    transition: `1.3s all cubic-bezier(0.22, 0.61, 0.36, 1)`
   };
+
+  console.log(props);
 
   return (
     <div style={ bgImg }>
       <div styleName="overlay">
         <div styleName="container">
-          <Row center="xs" styleName="table-cont">
+          <Branding/>
+          <Row center="xs" middle="xs">
             <Col styleName="header-pos" md={8} sm={6} xs={12}>
-              <Greeting/>
+              <Greeting
+                tagline={ props.stateStyles.tagline }
+              />
               <SearchBar
-                searchTerm={ props.searchTerm }
-                searchChange={ props.searchChange }
-                searched={ props.searched }
-                pos={ props.pos }
+                displaySuggestions= { props.stateStyles.toggleList }
+                pos={ props.stateStyles.pos }
+                userTerms={ props.userSearchTerms }
+                handleSearch={ props.handleSearch }
+                toggleSuggestions= { props.toggleSuggestions }
               />
             </Col>
           </Row>
@@ -42,11 +48,15 @@ const Header = (props) => {
 
 Header.propTypes = {
   image: PropTypes.string,
-  vh: PropTypes.string,
-  searchTerm: PropTypes.array,
-  searchChange: PropTypes.func,
-  searched: PropTypes.func,
-  pos: PropTypes.string
+  userSearchTerms: PropTypes.array,
+  handleSearch: PropTypes.func,
+  toggleSuggestions: PropTypes.func,
+  stateStyles: PropTypes.shape({
+    vh: PropTypes.string,
+    tagline: PropTypes.string,
+    toggleList: PropTypes.string,
+    pos: PropTypes.string,
+  }),
 };
 
 export default cssModules(Header, styles);

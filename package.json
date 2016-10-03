@@ -13,6 +13,7 @@
   "dependencies": {
     "autoprefixer": "^6.3.1",
     "aws-sdk": "^2.3.1",
+    "axios": "^0.14.0",
     "babel-core": "^6.3.15",
     "babel-eslint": "^5.0.0-beta4",
     "babel-loader": "^6.2.0",
@@ -56,6 +57,7 @@
     "postcss-flexbugs-fixes": "^2.0.0",
     "postcss-gradient-transparency-fix": "^1.0.2",
     "postcss-import": "^8.1.2",
+    "postcss-inline-svg": "^2.1.2",
     "postcss-pseudo-class-any-link": "^1.0.0",
     "postcss-pseudoelements": "^3.0.0",
     "postcss-reporter": "^1.4.1",

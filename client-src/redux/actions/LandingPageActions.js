@@ -1,25 +1,29 @@
-import { USER_VALUE, USER_SEARCH } from './actionTypes/LandingPage_types';
+import { USER_SEARCH, TOGGLE_LIST } from './actionTypes/LandingPage_types';
+// import axios from 'axios';
 
-
-function userValue(payload) {
-  // payload = payload.split($)
-
-  // payload = payload[3]
-  console.log('payload:', payload);
-
+// This is to add the user value to an arry
+function userSearch(payload) {
   return {
-    type: USER_VALUE,
+    type: USER_SEARCH,
     payload
   };
 }
 
-function userSearch() {
+// This is to toggle the suggestions list when typing only
+function toggleList() {
   return {
-    type: USER_SEARCH,
+    type: TOGGLE_LIST,
   };
 }
+// Demo of Async dispatch's
+// function userSearch(payload) {
+//   return dispatch => {
+//     dispatch(userValue(payload))
+//     dispatch(userList())
+//   }
+// }
 
 module.exports = {
-  userValue,
-  userSearch
+  userSearch,
+  toggleList
 };

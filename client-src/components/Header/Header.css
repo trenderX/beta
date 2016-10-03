@@ -3,12 +3,6 @@
   composes: container from '../../styles/main.css';
 }
 
-.table-cont {
-  height: 100%;
-  display: table;
-  margin:auto;
-}
-
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
   height: 100%;
@@ -21,9 +15,10 @@
 
 .header-pos {
   transition: 1.5s all cubic-bezier(0.22, 0.61, 0.36, 1);
-  height: 100%;
-  display: table-cell;
-  vertical-align: middle;
-  margin:auto;
+  margin: auto;
   position: relative;
+}
+
+.full-height {
+  height: 100%;
 }

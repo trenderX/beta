@@ -1,4 +1,4 @@
-.greeting {
+.tagline {
   font-family: 'Open Sans';
   font-style: italic;
   color: white;
@@ -8,9 +8,12 @@
   font-weight: 800;
   margin-bottom: 21px;
 }
+.tagline-sm {
+  display: none;
+}
 
 
-.greeting-sub {
+.tagline-sub {
   font-weight: 600;
   font-size: 1.25em;
   color: white;

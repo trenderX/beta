@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import DevTools from './DevTools';
 
 // Require Main Global styles for the App
@@ -21,7 +21,6 @@ class App extends Component {
       renderApp = (
           <div>
             {this.props.children}
-            <Footer/>
             <DevTools/>
           </div>
       );
@@ -29,7 +28,6 @@ class App extends Component {
       renderApp = (
           <div>
             {this.props.children}
-            <Footer/>
           </div>
       );
     }

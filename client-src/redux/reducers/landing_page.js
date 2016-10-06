@@ -1,7 +1,13 @@
-import { USER_SEARCH, TOGGLE_LIST } from '../actions/actionTypes/LandingPage_types';
+import {
+  USER_SEARCH,
+  TOGGLE_LIST,
+  GET_TAGS,
+  ADD_TAG_DG
+} from '../actions/actionTypes/LandingPage_types';
 
 const initState = {
   userSearchTerms: [],
+  tagsFromDB: [],
   stateStyles: {
     vh: '100vh',
     pos: 'search-pos',
@@ -19,7 +25,7 @@ function search(state = initState, action) {
       const tagline = `tagline-sm`;
       let toggleList = `hide-list`;
       return { ...state,
-        userSearchTerms: query,
+        userSearchTerms:query,
         stateStyles: { ...state.stateStyles,
           vh,
           pos,
@@ -31,6 +37,12 @@ function search(state = initState, action) {
       toggleList = 'show-list';
       return { ...state,
         stateStyles: { ...state.stateStyles, toggleList }
+      };
+    case GET_TAGS:
+      const tags = action.objObj;
+      console.log('reducerTags', tags)
+      return { ...state,
+        tagsFromDB: tags,
       };
     default:
       return state;

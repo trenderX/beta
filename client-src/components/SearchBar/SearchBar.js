@@ -8,7 +8,7 @@ const options = {
 };
 const flag = true;
 const countries = {
-  'ES-es': 'Spain',
+  'Spain Country': 'Spain',
   'TH-th': `<h1>Thailand</h1>`,
   'EN-gb': 'England',
   'EN-en': 'USA',
@@ -17,7 +17,6 @@ const countries = {
 };
 const SearchBar = (props) => {
 // class SearchBar extends Component {
-  console.log('displaySuggestions:', props);
   return (
     <div styleName={`search-cont ${props.pos}`}>
       <Autocomplete
@@ -25,11 +24,12 @@ const SearchBar = (props) => {
         styleName={ props.displaySuggestions }
         multiple={ flag }
         direction="down"
-        label="Choose countries"
+        label="Search Everything."
         onChange={props.handleSearch}
-        source={countries}
+        source={props.tagsFromDB}
         value={props.userTerms}
         onKeyPress={ props.toggleSuggestions }
+        allowCreate={true}
       />
     </div>
   );

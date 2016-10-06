@@ -19,7 +19,6 @@ const Header = (props) => {
     transition: `1.3s all cubic-bezier(0.22, 0.61, 0.36, 1)`
   };
 
-  console.log(props);
 
   return (
     <div style={ bgImg }>
@@ -37,6 +36,7 @@ const Header = (props) => {
                 userTerms={ props.userSearchTerms }
                 handleSearch={ props.handleSearch }
                 toggleSuggestions= { props.toggleSuggestions }
+                tagsFromDB = { props.tagsFromDB }
               />
             </Col>
           </Row>
@@ -49,6 +49,7 @@ const Header = (props) => {
 Header.propTypes = {
   image: PropTypes.string,
   userSearchTerms: PropTypes.array,
+  // tagsFromDB: PropTypes.shape({}),
   handleSearch: PropTypes.func,
   toggleSuggestions: PropTypes.func,
   stateStyles: PropTypes.shape({

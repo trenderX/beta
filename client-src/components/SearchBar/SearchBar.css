@@ -6,6 +6,14 @@
   padding-bottom: 0px!important;
 }
 
+.bar {
+  background-color: white;
+  color: white;
+}
+
+.label {
+  color: white;
+}
 .search-pos {
   position: relative;
 }
@@ -25,7 +33,7 @@
   }
 }
 
-.autocomplete,
+/*.autocomplete,
 .input {
   padding-bottom: 0;
 }
@@ -41,9 +49,9 @@
 }
 
 
-/*.values {
+.values {
   display: none;
-}*/
+}
 .hide-list {
   .suggestions {
     display:none;
@@ -55,4 +63,4 @@
     display: block!important;
   }
 }
-
+*/

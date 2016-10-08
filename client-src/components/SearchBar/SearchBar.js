@@ -1,46 +1,33 @@
 import React, { PropTypes } from 'react';
 import styles from './SearchBar.css';
 import cssModules from 'react-css-modules';
-import Autocomplete from 'react-toolbox/lib/autocomplete';
+import Input from 'react-toolbox/lib/input';
 
 const options = {
   allowMultiple: true
 };
-const flag = true;
-const countries = {
-  'ES-es': 'Spain',
-  'TH-th': `<h1>Thailand</h1>`,
-  'EN-gb': 'England',
-  'EN-en': 'USA',
-  'It-it': 'Italy',
-  'Br-br': 'Brazil'
-};
-const SearchBar = (props) => {
-// class SearchBar extends Component {
-  console.log('displaySuggestions:', props);
-  return (
-    <div styleName={`search-cont ${props.pos}`}>
-      <Autocomplete
-        theme={ styles }
-        styleName={ props.displaySuggestions }
-        multiple={ flag }
-        direction="down"
-        label="Choose countries"
-        onChange={props.handleSearch}
-        source={countries}
-        value={props.userTerms}
-        onKeyPress={ props.toggleSuggestions }
+
+const SearchBar = (props) =>
+  <div styleName={`search-cont ${ props.pos }`}>
+    <form onSubmit={ props.handleSearch }>
+      <Input
+        theme= { styles }
+        type="text"
+        label="Fynd more"
+        name="name"
+        value={ props.userValue }
+        onChange={ props.handleChange }
+        maxLength={ 16 }
       />
-    </div>
-  );
-};
+    </form>
+  </div>;
 
 SearchBar.propTypes = {
-  displaySuggestions: PropTypes.string,
-  handleSearch: PropTypes.func,
   pos: PropTypes.string,
-  toggleSuggestions: PropTypes.func,
-  userTerms: PropTypes.array,
+  handleSearch: PropTypes.func,
+  handleChange: PropTypes.func,
+  userValue: PropTypes.string,
 };
+
 
 export default cssModules(SearchBar, styles, options);

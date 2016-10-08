@@ -1,19 +1,42 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import cssModules from 'react-css-modules';
-import { userSearch, toggleList } from '../../redux/actions/LandingPageActions';
 import styles from './LandingPage.css';
 import Header from '../../components/Header/Header';
 import defaultBG from '../../assets/imgs/city_shop.jpeg';
 // import { Grid, Row, Col } from 'react-flexbox-grid';
+import {
+  userSearch,
+  userInput,
+  toggleList,
+  retrieveTags
+} from '../../redux/actions/LandingPageActions';
 
 class LandingPage extends Component {
+  constructor(props) {
+    super(props);
+    // Operations usually carried out in componentWillMount go here
 
+    this.getTagsFromDB();
+  }
   // Helper functions, autobound by arrow funcs
-  handleSearch = (e) => {
-    this.props.dispatch(userSearch(e));
+  getTagsFromDB = () => {
+    this.props.dispatch(retrieveTags())
+    .then(console.log('retrieved tags'));
   };
 
+  // Fired on each keystroke Searchbar
+  handleChange = (e) => {
+    this.props.dispatch(userInput(e));
+  };
+
+  // Fired on form submit for Searchbar
+  handleSearch = (e) => {
+    e.preventDefault();
+    this.props.dispatch(userSearch(this.props.search.userValue));
+  };
+
+  // Fired on keypress for Searchbar
   toggleSuggestions = () => {
     if (this.props.search.stateStyles.toggleList !== 'show-list') {
       this.props.dispatch(toggleList());
@@ -23,15 +46,14 @@ class LandingPage extends Component {
   };
 
   render() {
-    // * defaultBG needs to be an API call to pexels || default img
-    // * need to update once search term is passed up
-    console.log('toggleList:', this.props.search.stateStyles.toggleList);
+    // defaultBG needs to be an API call to pexels || default img
+    // need to update once search term is passed up
     return (
       <section>
         <Header
           toggleSuggestions= {this.toggleSuggestions}
           handleSearch={ this.handleSearch }
-          // searched={ this.handleSearch }
+          handleChange={ this.handleChange }
           image={ defaultBG }
           {...this.props.search}
         />
@@ -48,7 +70,7 @@ LandingPage.propTypes = {
       toggleList: PropTypes.string,
       pos: PropTypes.string,
     }),
-    userSearhTerms: PropTypes.array
+    userValue: PropTypes.string
   }),
   dispatch: PropTypes.func
 };

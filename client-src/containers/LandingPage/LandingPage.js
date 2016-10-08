@@ -7,6 +7,7 @@ import defaultBG from '../../assets/imgs/city_shop.jpeg';
 // import { Grid, Row, Col } from 'react-flexbox-grid';
 import {
   userSearch,
+  userInput,
   toggleList,
   retrieveTags
 } from '../../redux/actions/LandingPageActions';
@@ -23,8 +24,14 @@ class LandingPage extends Component {
     .then(console.log('retrieved tags'))
   };
 
+  handleChange = (e) => {
+    this.props.dispatch(userInput(e))
+  };
+
   handleSearch = (e) => {
-    this.props.dispatch(userSearch(e));
+    console.log('search term:', this.props.search.userValue)
+    e.preventDefault()
+    this.props.dispatch(userSearch(this.props.search.userValue));
   };
 
   toggleSuggestions = () => {
@@ -43,6 +50,7 @@ class LandingPage extends Component {
         <Header
           toggleSuggestions= {this.toggleSuggestions}
           handleSearch={ this.handleSearch }
+          handleChange={ this.handleChange }
           // searched={ this.handleSearch }
           image={ defaultBG }
           {...this.props.search}
@@ -60,7 +68,7 @@ LandingPage.propTypes = {
       toggleList: PropTypes.string,
       pos: PropTypes.string,
     }),
-    userSearhTerms: PropTypes.array
+    // userSearhTerms: PropTypes.array
   }),
   dispatch: PropTypes.func
 };

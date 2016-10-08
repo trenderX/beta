@@ -1,46 +1,43 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import styles from './SearchBar.css';
 import cssModules from 'react-css-modules';
-import Autocomplete from 'react-toolbox/lib/autocomplete';
+import Input from 'react-toolbox/lib/input';
 
 const options = {
   allowMultiple: true
 };
-const flag = true;
-const countries = {
-  'Spain Country': 'Spain',
-  'TH-th': `<h1>Thailand</h1>`,
-  'EN-gb': 'England',
-  'EN-en': 'USA',
-  'It-it': 'Italy',
-  'Br-br': 'Brazil'
-};
-const SearchBar = (props) => {
-// class SearchBar extends Component {
-  return (
-    <div styleName={`search-cont ${props.pos}`}>
-      <Autocomplete
-        theme={ styles }
-        styleName={ props.displaySuggestions }
-        multiple={ flag }
-        direction="down"
-        label="Search Everything."
-        onChange={props.handleSearch}
-        source={props.tagsFromDB}
-        value={props.userTerms}
-        onKeyPress={ props.toggleSuggestions }
-        allowCreate={true}
-      />
-    </div>
-  );
-};
 
-SearchBar.propTypes = {
-  displaySuggestions: PropTypes.string,
-  handleSearch: PropTypes.func,
-  pos: PropTypes.string,
-  toggleSuggestions: PropTypes.func,
-  userTerms: PropTypes.array,
-};
+class SearchBar extends Component {
+  // state = { name:'', val:''};
+
+  // handleChange = (e,) => {
+  //   this.setState({...this.state, name: e});
+  // };
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   this.setState({...this.state, val: this.state.name});
+  // };
+
+  render(){
+
+    return (
+      <div styleName={`search-cont ${this.props.pos}`}>
+        <form onSubmit={this.props.handleSearch}>
+          <Input
+          theme= { styles }
+          type='text'
+          label='Name'
+          name='name'
+          value={this.props.userValue}
+          onChange={this.props.handleChange}
+          maxLength={16} />
+        </form>
+      </div>
+    );
+  };
+}
+
+
 
 export default cssModules(SearchBar, styles, options);

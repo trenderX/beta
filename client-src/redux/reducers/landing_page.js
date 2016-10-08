@@ -1,5 +1,6 @@
 import {
   USER_SEARCH,
+  USER_INPUT,
   TOGGLE_LIST,
   GET_TAGS,
   ADD_TAG_DG
@@ -7,6 +8,7 @@ import {
 
 const initState = {
   userSearchTerms: [],
+  userValue:'',
   tagsFromDB: [],
   stateStyles: {
     vh: '100vh',
@@ -24,8 +26,10 @@ function search(state = initState, action) {
       const pos = `search-pos-abs`;
       const tagline = `tagline-sm`;
       let toggleList = `hide-list`;
+      const clear = '';
       return { ...state,
-        userSearchTerms:query,
+        userSearchTerms:[...state.userSearchTerms, query],
+        userValue: clear,
         stateStyles: { ...state.stateStyles,
           vh,
           pos,
@@ -33,13 +37,16 @@ function search(state = initState, action) {
           toggleList
         }
       };
+    case USER_INPUT:
+      const input = action.payload;
+      return { ...state, userValue:input };
     case TOGGLE_LIST:
       toggleList = 'show-list';
       return { ...state,
         stateStyles: { ...state.stateStyles, toggleList }
       };
     case GET_TAGS:
-      const tags = action.objObj;
+      const tags = action.tags;
       console.log('reducerTags', tags)
       return { ...state,
         tagsFromDB: tags,

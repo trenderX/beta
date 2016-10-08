@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {
   USER_SEARCH,
+  USER_INPUT,
   TOGGLE_LIST,
   ADD_TAG_DB,
   GET_TAGS
@@ -10,6 +11,13 @@ import {
 function userSearch(payload) {
   return {
     type: USER_SEARCH,
+    payload
+  };
+}
+
+function userInput(payload) {
+  return {
+    type: USER_INPUT,
     payload
   };
 }
@@ -38,23 +46,22 @@ function addTagToDB(tag) {
 function retrieveTags() {
   return dispatch => axios.get('/api/tags')
     .then(function(payload) {
-      // console.log('/api/tags payload:', payload);
-      let newKey,
-        newVal;
-      let objObj = {};
+      //the array of all tag objects
+      let tags = [];
 
       payload.data.data.map(function(tag) {
-        newKey = tag.text + '/' + tag.context;
-        newVal = tag.text;
-
-        let ace = {...objObj, [`${newKey}`]: newVal }
-        objObj = ace;
-
+        let newTag = {
+          text: tag.text.value,
+          context: tag.context.main,
+          // tabs: tag.tabs
+        }
+        let builtArr = [...tags, newTag]
+        tags = builtArr
       });
-      console.log('objObj:',objObj)
+      console.log('tagsStructure:',tags)
       dispatch({
         type: GET_TAGS,
-        objObj
+        tags
       })
     })
 }
@@ -69,6 +76,7 @@ function retrieveTags() {
 
 module.exports = {
   userSearch,
+  userInput,
   toggleList,
   addTagToDB,
   retrieveTags

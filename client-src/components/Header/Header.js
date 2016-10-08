@@ -34,7 +34,9 @@ const Header = (props) => {
                 displaySuggestions= { props.stateStyles.toggleList }
                 pos={ props.stateStyles.pos }
                 userTerms={ props.userSearchTerms }
+                userValue={ props.userValue }
                 handleSearch={ props.handleSearch }
+                handleChange={ props.handleChange }
                 toggleSuggestions= { props.toggleSuggestions }
                 tagsFromDB = { props.tagsFromDB }
               />

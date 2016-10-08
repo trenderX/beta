@@ -3,12 +3,12 @@ import {
   USER_INPUT,
   TOGGLE_LIST,
   GET_TAGS,
-  ADD_TAG_DG
+  // ADD_TAG_DB
 } from '../actions/actionTypes/LandingPage_types';
 
 const initState = {
   userSearchTerms: [],
-  userValue:'',
+  userValue: '',
   tagsFromDB: [],
   stateStyles: {
     vh: '100vh',
@@ -28,7 +28,7 @@ function search(state = initState, action) {
       let toggleList = `hide-list`;
       const clear = '';
       return { ...state,
-        userSearchTerms:[...state.userSearchTerms, query],
+        userSearchTerms: [...state.userSearchTerms, query],
         userValue: clear,
         stateStyles: { ...state.stateStyles,
           vh,
@@ -39,7 +39,7 @@ function search(state = initState, action) {
       };
     case USER_INPUT:
       const input = action.payload;
-      return { ...state, userValue:input };
+      return { ...state, userValue: input };
     case TOGGLE_LIST:
       toggleList = 'show-list';
       return { ...state,
@@ -47,7 +47,7 @@ function search(state = initState, action) {
       };
     case GET_TAGS:
       const tags = action.tags;
-      console.log('reducerTags', tags)
+      console.log('reducerTags', tags);
       return { ...state,
         tagsFromDB: tags,
       };

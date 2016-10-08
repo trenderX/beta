@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 import {
   USER_SEARCH,
   USER_INPUT,
@@ -31,39 +31,40 @@ function toggleList() {
 
 
 function addTagToDB(tag) {
-  return function(dispatch) {
+  return function (dispatch) {
     return axios.post('/api/tags', tag)
-      .then(function(payload) {
+      .then(payload =>
         dispatch({
           type: ADD_TAG_DB,
           payload
-        });
-      });
+        })
+      );
   };
-};
+}
 
 
 function retrieveTags() {
   return dispatch => axios.get('/api/tags')
-    .then(function(payload) {
-      //the array of all tag objects
+    .then(payload => {
+      // the array of all tag objects
       let tags = [];
 
-      payload.data.data.map(function(tag) {
-        let newTag = {
+      payload.data.data.map(tag => {
+        const newTag = {
           text: tag.text.value,
           context: tag.context.main,
           // tabs: tag.tabs
-        }
-        let builtArr = [...tags, newTag]
-        tags = builtArr
+        };
+        const builtArr = [...tags, newTag];
+        tags = builtArr;
       });
-      console.log('tagsStructure:',tags)
+
+      console.log('tagsStructure:', tags);
       dispatch({
         type: GET_TAGS,
         tags
-      })
-    })
+      });
+    });
 }
 
 // Demo of Async dispatch's

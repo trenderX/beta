@@ -5,7 +5,8 @@ import SearchBar from '../SearchBar/SearchBar';
 import Greeting from '../Greeting/Greeting';
 import { Row, Col } from 'react-flexbox-grid';
 import Branding from '../Branding/Branding';
-// pure function
+
+
 const Header = (props) => {
   // move this into styles?
   const bgImg = {
@@ -32,13 +33,13 @@ const Header = (props) => {
               />
               <SearchBar
                 displaySuggestions= { props.stateStyles.toggleList }
-                pos={ props.stateStyles.pos }
-                userTerms={ props.userSearchTerms }
-                userValue={ props.userValue }
                 handleSearch={ props.handleSearch }
                 handleChange={ props.handleChange }
-                toggleSuggestions= { props.toggleSuggestions }
+                pos={ props.stateStyles.pos }
                 tagsFromDB = { props.tagsFromDB }
+                toggleSuggestions= { props.toggleSuggestions }
+                userTerms={ props.userSearchTerms }
+                userValue={ props.userValue }
               />
             </Col>
           </Row>
@@ -51,8 +52,10 @@ const Header = (props) => {
 Header.propTypes = {
   image: PropTypes.string,
   userSearchTerms: PropTypes.array,
-  // tagsFromDB: PropTypes.shape({}),
+  userValue: PropTypes.string,
+  tagsFromDB: PropTypes.array,
   handleSearch: PropTypes.func,
+  handleChange: PropTypes.func,
   toggleSuggestions: PropTypes.func,
   stateStyles: PropTypes.shape({
     vh: PropTypes.string,

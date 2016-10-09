@@ -14,7 +14,8 @@ const initState = {
     vh: '100vh',
     pos: 'search-pos',
     tagline: 'tagline',
-    toggleList: 'hide-list'
+    toggleList: true,
+    listShow: 'hide-list'
   }
 };
 
@@ -25,32 +26,39 @@ function search(state = initState, action) {
       const vh = `35vh`;
       const pos = `search-pos-abs`;
       const tagline = `tagline-sm`;
-      let toggleList = `hide-list`;
       const clear = '';
-      return { ...state,
+
+      return {...state,
         userSearchTerms: [...state.userSearchTerms, query],
         userValue: clear,
-        stateStyles: { ...state.stateStyles,
+        stateStyles: {...state.stateStyles,
           vh,
           pos,
           tagline,
-          toggleList
         }
       };
+
     case USER_INPUT:
       const input = action.payload;
-      return { ...state, userValue: input };
+      return {...state, userValue: input };
+
     case TOGGLE_LIST:
-      toggleList = 'show-list';
-      return { ...state,
-        stateStyles: { ...state.stateStyles, toggleList }
+      let toggleList = !state.stateStyles.toggleList;
+      let listShow = '';
+      state.stateStyles.toggleList === true ?
+      listShow = 'show-list' : listShow = 'hide-list'
+
+      return {...state,
+        stateStyles: {...state.stateStyles, toggleList, listShow }
       };
+
     case GET_TAGS:
       const tags = action.tags;
       console.log('reducerTags', tags);
-      return { ...state,
+      return {...state,
         tagsFromDB: tags,
       };
+
     default:
       return state;
   }

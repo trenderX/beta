@@ -1,0 +1,33 @@
+/*.item {
+  color: white;
+  height: 56px;
+}*/
+
+.item {
+  min-height: 56px!important;
+}
+
+.itemText {
+  color: black!important;
+  font-size: 1em!important;
+  font-weight: 500;
+}
+
+.list {
+  background-color: white;
+  margin: 0px;
+  padding-top: 0px!important;
+  padding-bottom: 0px!important;
+}
+
+.divider {
+  margin: 0px!important;
+}
+
+.hide-list {
+  display: none!important;
+}
+
+.show-list {
+  display: block!important;
+}

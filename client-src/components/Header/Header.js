@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import styles from './Header.css';
 import cssModules from 'react-css-modules';
 import SearchBar from '../SearchBar/SearchBar';
+import Suggestions from '../Suggestions/Suggestions';
 import Greeting from '../Greeting/Greeting';
 import { Row, Col } from 'react-flexbox-grid';
 import Branding from '../Branding/Branding';
@@ -32,7 +33,7 @@ const Header = (props) => {
                 tagline={ props.stateStyles.tagline }
               />
               <SearchBar
-                displaySuggestions= { props.stateStyles.toggleList }
+                // displaySuggestions= { props.stateStyles.toggleList }
                 handleSearch={ props.handleSearch }
                 handleChange={ props.handleChange }
                 pos={ props.stateStyles.pos }
@@ -40,6 +41,10 @@ const Header = (props) => {
                 toggleSuggestions= { props.toggleSuggestions }
                 userTerms={ props.userSearchTerms }
                 userValue={ props.userValue }
+              />
+              <Suggestions
+                tagsFromDB= { props.tagsFromDB }
+                listShow={props.stateStyles.listShow}
               />
             </Col>
           </Row>
@@ -60,7 +65,7 @@ Header.propTypes = {
   stateStyles: PropTypes.shape({
     vh: PropTypes.string,
     tagline: PropTypes.string,
-    toggleList: PropTypes.string,
+    toggleList: PropTypes.boolean,
     pos: PropTypes.string,
   }),
 };

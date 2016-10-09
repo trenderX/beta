@@ -11,6 +11,7 @@ const SearchBar = (props) =>
   <div styleName={`search-cont ${ props.pos }`}>
     <form onSubmit={ props.handleSearch }>
       <Input
+        autoComplete="off"
         theme= { styles }
         type="text"
         label="Fynd more"

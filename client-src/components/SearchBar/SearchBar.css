@@ -10,7 +10,13 @@
   background-color: white;
   color: white;
 }
+.input {
+  padding-bottom: 1px!important;
+}
 
+.inputElement {
+  color: white!important;
+}
 .label {
   color: white;
 }

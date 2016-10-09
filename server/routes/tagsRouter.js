@@ -7,84 +7,14 @@ var TagService = require('../http-client/tags.service')
 
 
 function seedDB() {
-  // dummy tags, move to a diff file.
-  var addTag = {
-    text: {
-      value: 'Javascript',
-      unique: true
-    },
-    context: {
-      main: 'Code',
-      sub: false,
-      subType: null,
-    },
-    count: 0,
-    // tabs: {
-    //   first: 'social',
-    //   second: 'media',
-    //   third: 'places',
-    //   fourth: 'shop',
-    //   fifth: 'events',
-    //   sixth: 'web',
-    //   seventh: 'apps',
-    //   eight: 'movies/books',
-    //   ninth: 'jobs'
-    // }
-  };
-  var addTwo = {
-    text: {
-      value: 'Medici',
-      unique: true
-    },
-    context: {
-      main: 'Coffee',
-      sub: false,
-      subType: null,
-    },
-    count: 0,
-    // tabs: {
-    //   first: 'places',
-    //   second: 'social',
-    //   third: 'media',
-    //   fourth: 'shop',
-    //   fifth: 'events',
-    //   sixth: 'web',
-    //   seventh: 'apps',
-    //   eight: 'movies/books',
-    //   ninth: 'jobs'
-    // }
-  };
-  var addThree = {
-    text: {
-      value: 'iWatch',
-      unique: true
-    },
-    context: {
-      main: 'Apple',
-      sub: true,
-      subType: 'Smartwatch',
-    },
-    count: 0,
-    // tabs: {
-    //   first: 'apps',
-    //   second: 'social',
-    //   third: 'media',
-    //   fourth: 'shop',
-    //   fifth: 'events',
-    //   sixth: 'web',
-    //   seventh: 'places',
-    //   eight: 'movies/books',
-    //   ninth: 'jobs'
-    // }
-  };
-
-  var query = [addTag, addTwo, addThree],
+  // seed data
+  var query = require('../db/seedDB');
     update = { expire: new Date() },
     options = { upsert: true, new: true, setDefaultsOnInsert: true };
 
   query.map(function(tag) {
     // this function will check if tag exist
-    // and addOne if not.
+    // and create if not.
     Tag.findOneAndUpdate(tag, update, options, function(error, result) {
       if (error) return;
     });

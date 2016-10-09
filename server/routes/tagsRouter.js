@@ -70,7 +70,7 @@ router.post('/', function(req, res) {
     })
 })
 
-// Get all tags, will filter more later.
+// Get all tags
 router.get('/', function(req, res) {
   // Seeding for testing purposes.
 

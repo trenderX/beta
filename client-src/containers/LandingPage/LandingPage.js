@@ -25,6 +25,12 @@ class LandingPage extends Component {
     .then(console.log('retrieved tags'));
   };
 
+  matchedTags = (input) => {thiss
+
+    this.props.dispatch(retrieveTags())
+    .then(console.log('retrieved tags'));
+  };
+
   // Fired on each keystroke Searchbar
   handleChange = (e) => {
     this.props.dispatch(userInput(e));

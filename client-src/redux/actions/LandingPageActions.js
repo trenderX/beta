@@ -16,11 +16,22 @@ function userSearch(payload) {
 }
 
 function userInput(payload) {
+  if (payload === '') {
+    return function(dispatch) {
+      dispatch(toggleList())
+      dispatch({
+        type: USER_INPUT,
+        payload
+      })
+    }
+  }
   return {
     type: USER_INPUT,
     payload
   };
 }
+
+
 
 // This is to toggle the suggestions list when typing only
 function toggleList() {
@@ -31,7 +42,7 @@ function toggleList() {
 
 
 function addTagToDB(tag) {
-  return function (dispatch) {
+  return function(dispatch) {
     return axios.post('/api/tags', tag)
       .then(payload =>
         dispatch({

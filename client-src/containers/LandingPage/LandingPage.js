@@ -28,20 +28,20 @@ class LandingPage extends Component {
   // Fired on each keystroke Searchbar
   handleChange = (e) => {
     this.props.dispatch(userInput(e));
+
+    if (this.props.search.stateStyles.listShow === 'hide-list') {
+      this.props.dispatch(toggleList());
+    } else {
+      return;
+    };
   };
 
   // Fired on form submit for Searchbar
   handleSearch = (e) => {
     e.preventDefault();
     this.props.dispatch(userSearch(this.props.search.userValue));
-  };
-
-  // Fired on keypress for Searchbar
-  toggleSuggestions = () => {
-    if (this.props.search.stateStyles.toggleList !== 'show-list') {
+    if(this.props.search.stateStyles.listShow !== 'hide-list'){
       this.props.dispatch(toggleList());
-    } else {
-      return;
     }
   };
 
@@ -51,7 +51,6 @@ class LandingPage extends Component {
     return (
       <section>
         <Header
-          toggleSuggestions= {this.toggleSuggestions}
           handleSearch={ this.handleSearch }
           handleChange={ this.handleChange }
           image={ defaultBG }
@@ -67,8 +66,9 @@ LandingPage.propTypes = {
     stateStyles: PropTypes.shape({
       vh: PropTypes.string,
       tagline: PropTypes.string,
-      toggleList: PropTypes.string,
+      toggleList: PropTypes.boolean,
       pos: PropTypes.string,
+      listShow: PropTypes.string,
     }),
     userValue: PropTypes.string
   }),
